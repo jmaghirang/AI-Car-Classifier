@@ -18,8 +18,9 @@ class FocalLoss(Module):
         loss = -(self.alpha * (1 - p) ** self.gamma * log_p)
         return loss.gather(dim=-1, index=target.unsqueeze(-1)).mean()
 
-# Load FastAI ResNet Model
-model = load_learner('.', 'fastai_resnet.pkl')
+# Load the model
+# repository does not contain my model file for now
+model = load_learner('.', 'pkl files\.pkl')
 
 # Extract Mapping from cars_annos.mat
 def extract_label_mapping(mat_file):
@@ -28,7 +29,7 @@ def extract_label_mapping(mat_file):
     return {str(i + 1).zfill(4): str(c[0]) for i, c in enumerate(class_names)}
 
 # Load the mapping from cars_annos.mat
-label_mapping = extract_label_mapping('cars_annos.mat')
+label_mapping = extract_label_mapping('dataset\cars_annos.mat')
 
 # Save mapping to JSON 
 with open('label_mapping.json', 'w') as f:
@@ -62,11 +63,11 @@ def upload_image():
 
 # GUI Setup
 window = tk.Tk()
-window.title("Car Classification - FastAI ResNet")
+window.title("Car Classification")
 window.geometry("800x600")
 
 # GUI Elements
-title_label = Label(window, text="Car Classifier (FastAI ResNet)", font=("Arial", 24))
+title_label = Label(window, text="Car Classifier", font=("Arial", 24))
 title_label.pack(pady=20)
 
 upload_btn = Button(window, text="Upload Car Image", command=upload_image, font=("Arial", 14))
