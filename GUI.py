@@ -19,7 +19,7 @@ class FocalLoss(Module):
         return loss.gather(dim=-1, index=target.unsqueeze(-1)).mean()
 
 # Load the model
-model = load_learner('.', 'fastai_resnet.pkl')
+model = load_learner('.', 'fastai_resnet.pkl') # not included in the repo due to size
 
 # Extract Mapping from cars_annos.mat
 def extract_label_mapping(mat_file):
