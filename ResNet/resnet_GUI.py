@@ -19,8 +19,7 @@ class FocalLoss(Module):
         return loss.gather(dim=-1, index=target.unsqueeze(-1)).mean()
 
 # Load the model
-# repository does not contain my model file for now
-model = load_learner('.', 'pkl files\.pkl')
+model = load_learner('.', 'fastai_resnet.pkl')
 
 # Extract Mapping from cars_annos.mat
 def extract_label_mapping(mat_file):
@@ -32,7 +31,7 @@ def extract_label_mapping(mat_file):
 label_mapping = extract_label_mapping('dataset\cars_annos.mat')
 
 # Save mapping to JSON 
-with open('label_mapping.json', 'w') as f:
+with open('dataset\label_mapping.json', 'w') as f:
     json.dump(label_mapping, f)
 
 # Prediction Function
