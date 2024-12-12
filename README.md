@@ -1,8 +1,5 @@
 # AI-Car-Classifier
 
-# AI-Car-Classifier
-
-
 
 ## CS 482 Final Project
 
